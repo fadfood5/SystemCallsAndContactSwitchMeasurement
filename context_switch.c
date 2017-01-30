@@ -51,6 +51,13 @@ int read(){
         //Sets the end of the timer
         gettimeofday(&end, NULL);
 
+if(fileWrite != NULL){
+
+        FILE *fileWrite = fopen("pipe.txt", "r");
+
+        //Sets the end of the timer
+        gettimeofday(&end, NULL);
+
         char content[100];
         if(fileWrite != NULL){
                 while(fscanf(fileWrite, "%s", content) != EOF);
@@ -65,8 +72,8 @@ int read(){
         else{
                 printf("Cannot open file. Terminating...");
                 exit(1);
+                }
         }
-
 }
 
 //Function used to find the context switch time
@@ -74,7 +81,7 @@ int testContextSwitch(){
 
         int counter = 0;
         long totaltime = 0.0;
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 50; i++){
 
                 write(); //Calls first process
                 read(); //Calls second process
@@ -93,4 +100,5 @@ int main(){
         testContextSwitch();    //Initiates context switch function
         return 0;
 }
+                                                                                   103,1         Bot
 
